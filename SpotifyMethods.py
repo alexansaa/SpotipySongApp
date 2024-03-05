@@ -1,8 +1,19 @@
+import urllib.parse
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
 authScopes = {
     "default": "user-library-read"
+}
+
+queryType = {
+    1: "artist",
+    2: "album",
+    3: "track",
+    4: "playlist",
+    5: "show",
+    6: "episode",
+    7: "audiobook"
 }
 
 def authFlow(scope):
@@ -12,15 +23,20 @@ def authFlow(scope):
 def userSavedTracks(spotipyObj):
     results = spotipyObj.current_user_saved_tracks()
 
-    print(results)
-
     for idx, item in enumerate(results['items']):
         track = item['track']
         print(idx, track['artists'][0]['name'], " – ", track['name'])
 
+def search(query, myQType, limit, spotipyObj):
+    # formatedQuery = "artist:" + urllib.parse.quote(query)
+    formatedQuery = urllib.parse.quote(query)
+
+    return spotipyObj.search(formatedQuery, limit, 0, queryType[myQType], None)
+
 if __name__=="__main__":
     print("Auth Flow")
     sp = authFlow(authScopes["default"])
-    userSavedTracks(sp)
+    # userSavedTracks(sp)
+    artists = search("Heroes del Silencio", 2, 10,sp)
 
     
