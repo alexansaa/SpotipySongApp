@@ -33,6 +33,12 @@ def search(query, myQType, limit, spotipyObj):
 
     return spotipyObj.search(formatedQuery, limit, 0, queryType[myQType], None)
 
+def album_tracks(album_id, sp):
+    return sp.album_tracks(album_id, 50, 0, None)
+
+def track_info(track_id, sp):
+    return sp.track(track_id, None)
+
 if __name__=="__main__":
     print("Auth Flow")
     sp = authFlow(authScopes["default"])
