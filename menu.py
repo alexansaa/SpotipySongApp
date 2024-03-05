@@ -1,5 +1,3 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
 
 def obtener_artistas(nombre_artista):
     # Implementa la lógica para obtener los artistas que coinciden con el nombre
@@ -26,8 +24,7 @@ def mostrar_menu():
     print("0. Salir")
 
 def main():
-    scope = "user-library-read"
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
+   
 
     while True:
         mostrar_menu()
