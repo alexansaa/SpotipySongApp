@@ -1,3 +1,9 @@
+import SpotifyMethods
+
+def test():
+    # Implementa la lógica para obtener los artistas que coinciden con el nombre
+    
+    pass 
 
 def obtener_artistas(nombre_artista):
     # Implementa la lógica para obtener los artistas que coinciden con el nombre
@@ -24,6 +30,7 @@ def mostrar_menu():
     print("0. Salir")
 
 def main():
+
    
 
     while True:
@@ -32,6 +39,7 @@ def main():
 
         if opcion == "1":
             nombre_artista = input("Ingresa el nombre del artista: ")
+            
             obtener_artistas(nombre_artista)
 
         elif opcion == "2":
